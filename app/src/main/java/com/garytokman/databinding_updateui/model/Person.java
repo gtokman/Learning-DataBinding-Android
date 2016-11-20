@@ -3,19 +3,18 @@ package com.garytokman.databinding_updateui.model;
 // 11/20/16
 // DataBinding-UpdateUI
 
+import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.databinding.Observable;
-import android.databinding.PropertyChangeRegistry;
 import android.view.View;
 
 import com.garytokman.databinding_updateui.BR;
 
-public class Person implements Observable {
+public class Person extends BaseObservable {
 
     private String mName;
     private String mAge;
     private String mJob;
-    private PropertyChangeRegistry mRegistry = new PropertyChangeRegistry();
+
 
     public String getName() {
         return mName;
@@ -32,7 +31,7 @@ public class Person implements Observable {
 
     public void setAge(String age) {
         mAge = age;
-        mRegistry.notifyChange(this, BR.age);
+        notifyPropertyChanged(BR.age);
     }
 
     @Bindable
@@ -42,17 +41,7 @@ public class Person implements Observable {
 
     public void setJob(String job) {
         mJob = job;
-        mRegistry.notifyChange(this, BR.job);
-    }
-
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-        mRegistry.add(callback);
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-        mRegistry.remove(callback);
+        notifyPropertyChanged(BR.job);
     }
 
     public void onClickUpdate(View view) {
