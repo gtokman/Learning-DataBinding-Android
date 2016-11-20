@@ -51,16 +51,19 @@ public class Person extends BaseObservable {
             Thread.sleep(5000);
             this.setAge("25 years old!");
             this.setJob("Android Developer at Facebook.");
+            this.setImage("http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2016/09/waterbug-shutterstock_103061150.png");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
+    @Bindable
     public String getImage() {
         return mImage;
     }
 
     public void setImage(String image) {
         mImage = image;
+        notifyPropertyChanged(BR.image);
     }
 }
