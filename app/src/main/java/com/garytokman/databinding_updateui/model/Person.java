@@ -14,14 +14,16 @@ public class Person extends BaseObservable {
     private String mName;
     private String mAge;
     private String mJob;
+    private String mImage;
 
-
+    @Bindable
     public String getName() {
         return mName;
     }
 
     public void setName(String name) {
         mName = name;
+        notifyPropertyChanged(BR.name);
     }
 
     @Bindable
@@ -52,5 +54,13 @@ public class Person extends BaseObservable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getImage() {
+        return mImage;
+    }
+
+    public void setImage(String image) {
+        mImage = image;
     }
 }

@@ -2,20 +2,29 @@
 
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         >
 
     <data>
         <variable
                 name="person"
-                type="com.garytokman.databinding_updateui.model.Person"/>
+                type="com.garytokman.databinding_updateui.model.Person"
+                />
+        <variable
+                name="car"
+                type="com.garytokman.databinding_updateui.model.Car"
+                />
+
+        <import type="android.view.View"/>
     </data>
 
-    <RelativeLayout
+    <LinearLayout
 
             android:id="@+id/activity_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
@@ -24,16 +33,34 @@
             >
 
 
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:text="@={person.name}"
+                android:hint="@string/name"
+                android:id="@+id/editText"
+                />
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                tools:src="@drawable/ic_cloud_download_black_48dp"
+                app:placeholder="@{@drawable/ic_cloud_download_black_48dp}"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/imageView"
+                app:imageUrl="@{person.image}"
+
+                />
         <TextView
                 android:text="@{person.name}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
                 android:id="@+id/nameText"
                 tools:text="Gary Tokman"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
+
                 />
         <TextView
                 android:text="@{person.age}"
@@ -43,29 +70,45 @@
                 tools:text="Age: 22"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:layout_below="@+id/nameText"
-                android:layout_alignParentStart="true"
+
                 />
         <TextView
                 android:text="@{person.job}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/jobText"
+                android:id="@+id/textView4"
                 tools:text="Android Developer"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:layout_below="@+id/ageText"
-                android:layout_alignParentStart="true"
+
+                />
+        <TextView
+                android:text="@{car.type}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobText"
+                tools:text="car type"
+                android:visibility="@{checkBox.checked ? View.VISIBLE: View.GONE}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAlignment="center"
+                android:layout_marginBottom="196dp"
+                />
+        <CheckBox
+                android:text="@string/show_car_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox"
+                android:layout_gravity="center_horizontal"
+
                 />
         <Button
-                android:text="update"
+                android:text="@string/update"
                 android:onClick="@{person.onClickUpdate}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom|center_horizontal"
                 android:id="@+id/updateButton"
                 />
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>
