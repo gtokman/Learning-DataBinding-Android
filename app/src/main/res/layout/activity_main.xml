@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        >
+
+    <data>
+        <variable
+                name="person"
+                type="com.garytokman.databinding_updateui.model.Person"/>
+    </data>
+
+    <RelativeLayout
+
+            android:id="@+id/activity_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            tools:context="com.garytokman.databinding_updateui.MainActivity"
+            >
+
+
+        <TextView
+                android:text="@{person.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/nameText"
+                tools:text="Gary Tokman"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAlignment="center"
+                />
+        <TextView
+                android:text="@{person.age}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ageText"
+                tools:text="Age: 22"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAlignment="center"
+                android:layout_below="@+id/nameText"
+                android:layout_alignParentStart="true"
+                />
+        <TextView
+                android:text="@{person.job}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobText"
+                tools:text="Android Developer"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAlignment="center"
+                android:layout_below="@+id/ageText"
+                android:layout_alignParentStart="true"
+                />
+        <Button
+                android:text="update"
+                android:onClick="@{person.onClickUpdate}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/updateButton"
+                />
+    </RelativeLayout>
+
+</layout>
